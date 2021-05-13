@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program_Facturat", "Program_Facturat.csproj", "{AAB22C3E-C135-465F-AB3E-487A813206D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAB22C3E-C135-465F-AB3E-487A813206D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB22C3E-C135-465F-AB3E-487A813206D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB22C3E-C135-465F-AB3E-487A813206D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB22C3E-C135-465F-AB3E-487A813206D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2598751-BD9B-4169-A0C8-8B30908C55E8}
+	EndGlobalSection
+EndGlobal
