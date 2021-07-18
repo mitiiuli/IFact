@@ -106,8 +106,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>masterDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modificare_date_clienti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modificare_date_clienti.Designer.cs">
+      <DependentUpon>Modificare_date_clienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modificare_prod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modificare_prod.Designer.cs">
+      <DependentUpon>Modificare_prod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rapoarte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rapoarte.Designer.cs">
+      <DependentUpon>Rapoarte.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Update_Societate.cs">
       <SubType>Form</SubType>
@@ -131,6 +149,12 @@
     <EmbeddedResource Include="IFact_Main.resx">
       <DependentUpon>IFact_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modificare_date_clienti.resx">
+      <DependentUpon>Modificare_date_clienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modificare_prod.resx">
+      <DependentUpon>Modificare_prod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -141,6 +165,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Rapoarte.resx">
+      <DependentUpon>Rapoarte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Update_Societate.resx">
       <DependentUpon>Update_Societate.cs</DependentUpon>
     </EmbeddedResource>

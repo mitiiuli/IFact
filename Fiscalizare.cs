@@ -21,16 +21,23 @@ namespace Program_Facturat
             SqlConnection connection = new SqlConnection(constring);
             connection.Open();
 
-            string commandStr = "If not exists (select name from sysobjects where name = 'catalog_prod') CREATE TABLE catalog_prod(id int IDENTITY(1,1) PRIMARY KEY, denumire varchar(50), um varchar(20), pret_f_tva varchar(20), val_tva varchar(5))";
-            string str_date_firma_clienti = "If not exists (select name from sysobjects where name = 'date_firma_clienti') CREATE TABLE date_firma_clienti(id int IDENTITY(1,1) PRIMARY KEY, nume_firma varchar(50), CUI varchar(50), nr_reg_comert varchar(50), sediul varchar(50), nr_telefon varchar(50),cont varchar(50), banca varchar(50), email varchar(50))";
+            string commandStr = "If not exists (select name from sysobjects where name = 'catalog_prod') CREATE TABLE catalog_prod(id int IDENTITY(1,1) PRIMARY KEY, denumire varchar(50), um varchar(20), pret_f_tva varchar(20), val_tva varchar(5), sterge varchar(50))";
+            string str_fact_detalii = "If not exists (select name from sysobjects where name = 'fact_detalii') CREATE TABLE fact_detalii(id int IDENTITY(1,1) PRIMARY KEY, nr_doc varchar(10), nr_crt varchar(10), denumire varchar(50), um varchar(20), cant varchar(20), pret_f_tva varchar(20), valoare varchar(20), val_tva varchar(10), cota_tva varchar(10))";
             string str_date_firma = "If not exists (select name from sysobjects where name = 'Date_firma') CREATE TABLE Date_firma(id int IDENTITY(1,1) PRIMARY KEY, nume_firma varchar(50), CUI varchar(50), nr_reg_comert varchar(50), sediul varchar(50), nr_telefon varchar(50),cont varchar(50), banca varchar(50), email varchar(50))";
+            string str_date_clienti = "If not exists (select name from sysobjects where name = 'Date_clienti') CREATE TABLE Date_clienti(id int IDENTITY(1,1) PRIMARY KEY, nume_firma varchar(50), CUI varchar(50), nr_reg_comert varchar(50), sediul varchar(50), nr_telefon varchar(50),cont varchar(50), banca varchar(50), email varchar(50), pers_contact varchar(50), tel_pers_contact varchar(50), email_pers_contact varchar(50))";
+            string str_documente = "If not exists (select name from sysobjects where name = 'Documente') CREATE TABLE Documente(id int IDENTITY(1,1) PRIMARY KEY, nr_doc varchar(10), data_emitere varchar(20), data_scadenta varchar(20), suma_totala varchar(20), nume_firma varchar(50), CUI varchar(50), nr_reg_comert varchar(50), sediul varchar(50), cont varchar(50), banca varchar(50), incasata varchar(59))";
             SqlCommand comand = new SqlCommand(commandStr, connection);
-            SqlCommand cmd_date_firma_clienti = new SqlCommand(str_date_firma_clienti, connection);
+            
             SqlCommand cmd_date_firma = new SqlCommand(str_date_firma, connection);
+            SqlCommand cmd_date_clienti = new SqlCommand(str_date_clienti, connection);
+            SqlCommand cmd_documente = new SqlCommand(str_documente, connection);
+            SqlCommand cmd_fact_detalii = new SqlCommand(str_fact_detalii, connection);
             comand.ExecuteNonQuery();
-            cmd_date_firma_clienti.ExecuteNonQuery();
+            
             cmd_date_firma.ExecuteNonQuery();
-
+            cmd_date_clienti.ExecuteNonQuery();
+            cmd_documente.ExecuteNonQuery();
+            cmd_fact_detalii.ExecuteNonQuery();
             string command1 = "SELECT iD from Date_firma";
             SqlCommand sc = new SqlCommand(command1, connection);
             SqlDataReader reader = sc.ExecuteReader();

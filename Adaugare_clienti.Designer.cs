@@ -29,6 +29,7 @@ namespace Program_Facturat
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,23 +42,40 @@ namespace Program_Facturat
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_nume_firma = new System.Windows.Forms.TextBox();
+            this.txt_cui = new System.Windows.Forms.TextBox();
+            this.txt_reg = new System.Windows.Forms.TextBox();
+            this.txt_cont = new System.Windows.Forms.TextBox();
+            this.txt_telefon = new System.Windows.Forms.TextBox();
+            this.txt_sediul = new System.Windows.Forms.TextBox();
+            this.txt_pers_contact = new System.Windows.Forms.TextBox();
+            this.txt_banca = new System.Windows.Forms.TextBox();
+            this.txt_email = new System.Windows.Forms.TextBox();
+            this.txt_email_pers_contact = new System.Windows.Forms.TextBox();
+            this.txt_tel_pers_contact = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numefirmaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cUIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrregcomertDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sediulDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrtelefonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bancaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perscontactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telperscontactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailperscontactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateclientiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDataSet = new Program_Facturat.masterDataSet();
             this.label13 = new System.Windows.Forms.Label();
+            this.date_clientiTableAdapter = new Program_Facturat.masterDataSetTableAdapters.Date_clientiTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -65,45 +83,45 @@ namespace Program_Facturat
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nume societate";
+            this.label1.Text = "Nume societate *";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "C.U.I.";
+            this.label2.Text = "C.U.I. *";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Nr. Reg. Com.";
+            this.label3.Text = "Nr. Reg. Com. *";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 77);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Adresa";
+            this.label4.Text = "Adresa *";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 100);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Cont";
+            this.label5.Text = "Cont *";
             // 
             // label6
             // 
@@ -119,9 +137,9 @@ namespace Program_Facturat
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 123);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Banca";
+            this.label7.Text = "Banca *";
             // 
             // label8
             // 
@@ -162,17 +180,17 @@ namespace Program_Facturat
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBox10);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox11);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txt_nume_firma);
+            this.panel1.Controls.Add(this.txt_cui);
+            this.panel1.Controls.Add(this.txt_reg);
+            this.panel1.Controls.Add(this.txt_cont);
+            this.panel1.Controls.Add(this.txt_telefon);
+            this.panel1.Controls.Add(this.txt_sediul);
+            this.panel1.Controls.Add(this.txt_pers_contact);
+            this.panel1.Controls.Add(this.txt_banca);
+            this.panel1.Controls.Add(this.txt_email);
+            this.panel1.Controls.Add(this.txt_email_pers_contact);
+            this.panel1.Controls.Add(this.txt_tel_pers_contact);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
@@ -190,91 +208,93 @@ namespace Program_Facturat
             this.panel1.Size = new System.Drawing.Size(319, 302);
             this.panel1.TabIndex = 2;
             // 
-            // textBox10
+            // txt_nume_firma
             // 
-            this.textBox10.Location = new System.Drawing.Point(109, 8);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(205, 20);
-            this.textBox10.TabIndex = 3;
+            this.txt_nume_firma.Location = new System.Drawing.Point(109, 8);
+            this.txt_nume_firma.Name = "txt_nume_firma";
+            this.txt_nume_firma.Size = new System.Drawing.Size(205, 20);
+            this.txt_nume_firma.TabIndex = 1;
+            this.txt_nume_firma.TextChanged += new System.EventHandler(this.txt_nume_firma_TextChanged);
             // 
-            // textBox9
+            // txt_cui
             // 
-            this.textBox9.Location = new System.Drawing.Point(109, 30);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 3;
+            this.txt_cui.Location = new System.Drawing.Point(109, 30);
+            this.txt_cui.Name = "txt_cui";
+            this.txt_cui.Size = new System.Drawing.Size(100, 20);
+            this.txt_cui.TabIndex = 2;
             // 
-            // textBox8
+            // txt_reg
             // 
-            this.textBox8.Location = new System.Drawing.Point(109, 52);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 3;
+            this.txt_reg.Location = new System.Drawing.Point(109, 52);
+            this.txt_reg.Name = "txt_reg";
+            this.txt_reg.Size = new System.Drawing.Size(100, 20);
+            this.txt_reg.TabIndex = 3;
             // 
-            // textBox7
+            // txt_cont
             // 
-            this.textBox7.Location = new System.Drawing.Point(109, 97);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(205, 20);
-            this.textBox7.TabIndex = 3;
+            this.txt_cont.Location = new System.Drawing.Point(109, 97);
+            this.txt_cont.Name = "txt_cont";
+            this.txt_cont.Size = new System.Drawing.Size(205, 20);
+            this.txt_cont.TabIndex = 5;
             // 
-            // textBox4
+            // txt_telefon
             // 
-            this.textBox4.Location = new System.Drawing.Point(109, 144);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.txt_telefon.Location = new System.Drawing.Point(109, 144);
+            this.txt_telefon.Name = "txt_telefon";
+            this.txt_telefon.Size = new System.Drawing.Size(100, 20);
+            this.txt_telefon.TabIndex = 7;
             // 
-            // textBox6
+            // txt_sediul
             // 
-            this.textBox6.Location = new System.Drawing.Point(109, 74);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(205, 20);
-            this.textBox6.TabIndex = 3;
+            this.txt_sediul.Location = new System.Drawing.Point(109, 74);
+            this.txt_sediul.Name = "txt_sediul";
+            this.txt_sediul.Size = new System.Drawing.Size(205, 20);
+            this.txt_sediul.TabIndex = 4;
             // 
-            // textBox2
+            // txt_pers_contact
             // 
-            this.textBox2.Location = new System.Drawing.Point(109, 188);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(163, 20);
-            this.textBox2.TabIndex = 3;
+            this.txt_pers_contact.Location = new System.Drawing.Point(109, 188);
+            this.txt_pers_contact.Name = "txt_pers_contact";
+            this.txt_pers_contact.Size = new System.Drawing.Size(163, 20);
+            this.txt_pers_contact.TabIndex = 9;
             // 
-            // textBox5
+            // txt_banca
             // 
-            this.textBox5.Location = new System.Drawing.Point(109, 120);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(205, 20);
-            this.textBox5.TabIndex = 3;
+            this.txt_banca.Location = new System.Drawing.Point(109, 120);
+            this.txt_banca.Name = "txt_banca";
+            this.txt_banca.Size = new System.Drawing.Size(205, 20);
+            this.txt_banca.TabIndex = 6;
             // 
-            // textBox3
+            // txt_email
             // 
-            this.textBox3.Location = new System.Drawing.Point(109, 166);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(163, 20);
-            this.textBox3.TabIndex = 3;
+            this.txt_email.Location = new System.Drawing.Point(109, 166);
+            this.txt_email.Name = "txt_email";
+            this.txt_email.Size = new System.Drawing.Size(163, 20);
+            this.txt_email.TabIndex = 8;
             // 
-            // textBox11
+            // txt_email_pers_contact
             // 
-            this.textBox11.Location = new System.Drawing.Point(109, 232);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(163, 20);
-            this.textBox11.TabIndex = 3;
+            this.txt_email_pers_contact.Location = new System.Drawing.Point(109, 232);
+            this.txt_email_pers_contact.Name = "txt_email_pers_contact";
+            this.txt_email_pers_contact.Size = new System.Drawing.Size(163, 20);
+            this.txt_email_pers_contact.TabIndex = 11;
             // 
-            // textBox1
+            // txt_tel_pers_contact
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 210);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.txt_tel_pers_contact.Location = new System.Drawing.Point(109, 210);
+            this.txt_tel_pers_contact.Name = "txt_tel_pers_contact";
+            this.txt_tel_pers_contact.Size = new System.Drawing.Size(100, 20);
+            this.txt_tel_pers_contact.TabIndex = 10;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(99, 264);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 12;
             this.button1.Text = "Adauga";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label12
             // 
@@ -287,11 +307,135 @@ namespace Program_Facturat
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.numefirmaDataGridViewTextBoxColumn,
+            this.cUIDataGridViewTextBoxColumn,
+            this.nrregcomertDataGridViewTextBoxColumn,
+            this.sediulDataGridViewTextBoxColumn,
+            this.nrtelefonDataGridViewTextBoxColumn,
+            this.contDataGridViewTextBoxColumn,
+            this.bancaDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.perscontactDataGridViewTextBoxColumn,
+            this.telperscontactDataGridViewTextBoxColumn,
+            this.emailperscontactDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.dateclientiBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(337, 21);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(722, 302);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // numefirmaDataGridViewTextBoxColumn
+            // 
+            this.numefirmaDataGridViewTextBoxColumn.DataPropertyName = "nume_firma";
+            this.numefirmaDataGridViewTextBoxColumn.HeaderText = "Nume Firma";
+            this.numefirmaDataGridViewTextBoxColumn.Name = "numefirmaDataGridViewTextBoxColumn";
+            this.numefirmaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cUIDataGridViewTextBoxColumn
+            // 
+            this.cUIDataGridViewTextBoxColumn.DataPropertyName = "CUI";
+            this.cUIDataGridViewTextBoxColumn.HeaderText = "CUI";
+            this.cUIDataGridViewTextBoxColumn.Name = "cUIDataGridViewTextBoxColumn";
+            this.cUIDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cUIDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // nrregcomertDataGridViewTextBoxColumn
+            // 
+            this.nrregcomertDataGridViewTextBoxColumn.DataPropertyName = "nr_reg_comert";
+            this.nrregcomertDataGridViewTextBoxColumn.HeaderText = "Nr.Reg.Com.";
+            this.nrregcomertDataGridViewTextBoxColumn.Name = "nrregcomertDataGridViewTextBoxColumn";
+            this.nrregcomertDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nrregcomertDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // sediulDataGridViewTextBoxColumn
+            // 
+            this.sediulDataGridViewTextBoxColumn.DataPropertyName = "sediul";
+            this.sediulDataGridViewTextBoxColumn.HeaderText = "Sediul";
+            this.sediulDataGridViewTextBoxColumn.Name = "sediulDataGridViewTextBoxColumn";
+            this.sediulDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nrtelefonDataGridViewTextBoxColumn
+            // 
+            this.nrtelefonDataGridViewTextBoxColumn.DataPropertyName = "nr_telefon";
+            this.nrtelefonDataGridViewTextBoxColumn.HeaderText = "Nr. telefon";
+            this.nrtelefonDataGridViewTextBoxColumn.Name = "nrtelefonDataGridViewTextBoxColumn";
+            this.nrtelefonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nrtelefonDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // contDataGridViewTextBoxColumn
+            // 
+            this.contDataGridViewTextBoxColumn.DataPropertyName = "cont";
+            this.contDataGridViewTextBoxColumn.HeaderText = "Cont";
+            this.contDataGridViewTextBoxColumn.Name = "contDataGridViewTextBoxColumn";
+            this.contDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // bancaDataGridViewTextBoxColumn
+            // 
+            this.bancaDataGridViewTextBoxColumn.DataPropertyName = "banca";
+            this.bancaDataGridViewTextBoxColumn.HeaderText = "Banca";
+            this.bancaDataGridViewTextBoxColumn.Name = "bancaDataGridViewTextBoxColumn";
+            this.bancaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "E-mail";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // perscontactDataGridViewTextBoxColumn
+            // 
+            this.perscontactDataGridViewTextBoxColumn.DataPropertyName = "pers_contact";
+            this.perscontactDataGridViewTextBoxColumn.HeaderText = "Pers. contact";
+            this.perscontactDataGridViewTextBoxColumn.Name = "perscontactDataGridViewTextBoxColumn";
+            this.perscontactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telperscontactDataGridViewTextBoxColumn
+            // 
+            this.telperscontactDataGridViewTextBoxColumn.DataPropertyName = "tel_pers_contact";
+            this.telperscontactDataGridViewTextBoxColumn.HeaderText = "Tel. pers. contact";
+            this.telperscontactDataGridViewTextBoxColumn.Name = "telperscontactDataGridViewTextBoxColumn";
+            this.telperscontactDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telperscontactDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // emailperscontactDataGridViewTextBoxColumn
+            // 
+            this.emailperscontactDataGridViewTextBoxColumn.DataPropertyName = "email_pers_contact";
+            this.emailperscontactDataGridViewTextBoxColumn.HeaderText = "E-mail pers. contact";
+            this.emailperscontactDataGridViewTextBoxColumn.Name = "emailperscontactDataGridViewTextBoxColumn";
+            this.emailperscontactDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailperscontactDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // dateclientiBindingSource
+            // 
+            this.dateclientiBindingSource.DataMember = "Date_clienti";
+            this.dateclientiBindingSource.DataSource = this.masterDataSet;
+            // 
+            // masterDataSet
+            // 
+            this.masterDataSet.DataSetName = "masterDataSet";
+            this.masterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label13
             // 
@@ -301,6 +445,10 @@ namespace Program_Facturat
             this.label13.Size = new System.Drawing.Size(35, 13);
             this.label13.TabIndex = 5;
             this.label13.Text = "Clienti";
+            // 
+            // date_clientiTableAdapter
+            // 
+            this.date_clientiTableAdapter.ClearBeforeFill = true;
             // 
             // Adaugare_clienti
             // 
@@ -315,9 +463,12 @@ namespace Program_Facturat
             this.Name = "Adaugare_clienti";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adaugare clienti";
+            this.Load += new System.EventHandler(this.Adaugare_clienti_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,18 +490,33 @@ namespace Program_Facturat
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_nume_firma;
+        private System.Windows.Forms.TextBox txt_cui;
+        private System.Windows.Forms.TextBox txt_reg;
+        private System.Windows.Forms.TextBox txt_cont;
+        private System.Windows.Forms.TextBox txt_telefon;
+        private System.Windows.Forms.TextBox txt_sediul;
+        private System.Windows.Forms.TextBox txt_pers_contact;
+        private System.Windows.Forms.TextBox txt_banca;
+        private System.Windows.Forms.TextBox txt_email;
+        private System.Windows.Forms.TextBox txt_email_pers_contact;
+        private System.Windows.Forms.TextBox txt_tel_pers_contact;
+        private masterDataSet masterDataSet;
+        private System.Windows.Forms.BindingSource dateclientiBindingSource;
+        private masterDataSetTableAdapters.Date_clientiTableAdapter date_clientiTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numefirmaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cUIDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrregcomertDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sediulDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrtelefonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bancaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perscontactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telperscontactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailperscontactDataGridViewTextBoxColumn;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

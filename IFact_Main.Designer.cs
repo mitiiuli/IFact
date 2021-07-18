@@ -32,7 +32,37 @@ namespace Program_Facturat
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label37 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label41 = new System.Windows.Forms.Label();
+            this.txt_total_valoare = new System.Windows.Forms.Label();
+            this.txt_total_valoare_tva = new System.Windows.Forms.Label();
+            this.txt_total_de_plata = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txt_cantitate = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.catalogprodBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDataSet = new Program_Facturat.masterDataSet();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txt_um = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txt_cota_tva = new System.Windows.Forms.TextBox();
+            this.txt_pret_fara_tva = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -45,8 +75,7 @@ namespace Program_Facturat
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.datefirmaclientiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.masterDataSet = new Program_Facturat.masterDataSet();
+            this.dateclientiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -76,6 +105,7 @@ namespace Program_Facturat
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.datefirmaclientiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -84,13 +114,20 @@ namespace Program_Facturat
             this.button7 = new System.Windows.Forms.Button();
             this.date_firmaTableAdapter = new Program_Facturat.masterDataSetTableAdapters.Date_firmaTableAdapter();
             this.date_firma_clientiTableAdapter = new Program_Facturat.masterDataSetTableAdapters.date_firma_clientiTableAdapter();
+            this.date_clientiTableAdapter = new Program_Facturat.masterDataSetTableAdapters.Date_clientiTableAdapter();
+            this.catalog_prodTableAdapter = new Program_Facturat.masterDataSetTableAdapters.catalog_prodTableAdapter();
             this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datefirmaclientiBindingSource)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_cantitate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catalogprodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datefirmaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datefirmaclientiBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -107,7 +144,8 @@ namespace Program_Facturat
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button8);
+            this.panel1.Controls.Add(this.label37);
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panel3);
@@ -119,15 +157,287 @@ namespace Program_Facturat
             this.panel1.Size = new System.Drawing.Size(976, 543);
             this.panel1.TabIndex = 1;
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(450, 183);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(101, 13);
+            this.label37.TabIndex = 15;
+            this.label37.Text = "Generare document";
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.label41);
+            this.panel5.Controls.Add(this.txt_total_valoare);
+            this.panel5.Controls.Add(this.txt_total_valoare_tva);
+            this.panel5.Controls.Add(this.txt_total_de_plata);
+            this.panel5.Controls.Add(this.label38);
+            this.panel5.Controls.Add(this.txt_cantitate);
+            this.panel5.Controls.Add(this.label32);
+            this.panel5.Controls.Add(this.button8);
+            this.panel5.Controls.Add(this.dataGridView1);
+            this.panel5.Controls.Add(this.comboBox4);
+            this.panel5.Controls.Add(this.button9);
+            this.panel5.Controls.Add(this.label33);
+            this.panel5.Controls.Add(this.txt_um);
+            this.panel5.Controls.Add(this.label35);
+            this.panel5.Controls.Add(this.txt_cota_tva);
+            this.panel5.Controls.Add(this.txt_pret_fara_tva);
+            this.panel5.Controls.Add(this.label36);
+            this.panel5.Controls.Add(this.label34);
+            this.panel5.Location = new System.Drawing.Point(3, 199);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(968, 339);
+            this.panel5.TabIndex = 14;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(466, 310);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(159, 20);
+            this.label41.TabIndex = 15;
+            this.label41.Text = "TOTAL DE PLATA:";
+            // 
+            // txt_total_valoare
+            // 
+            this.txt_total_valoare.AutoSize = true;
+            this.txt_total_valoare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_total_valoare.Location = new System.Drawing.Point(542, 290);
+            this.txt_total_valoare.Name = "txt_total_valoare";
+            this.txt_total_valoare.Size = new System.Drawing.Size(67, 20);
+            this.txt_total_valoare.TabIndex = 15;
+            this.txt_total_valoare.Text = "label38";
+            // 
+            // txt_total_valoare_tva
+            // 
+            this.txt_total_valoare_tva.AutoSize = true;
+            this.txt_total_valoare_tva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_total_valoare_tva.Location = new System.Drawing.Point(639, 290);
+            this.txt_total_valoare_tva.Name = "txt_total_valoare_tva";
+            this.txt_total_valoare_tva.Size = new System.Drawing.Size(67, 20);
+            this.txt_total_valoare_tva.TabIndex = 15;
+            this.txt_total_valoare_tva.Text = "label38";
+            // 
+            // txt_total_de_plata
+            // 
+            this.txt_total_de_plata.AutoSize = true;
+            this.txt_total_de_plata.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_total_de_plata.Location = new System.Drawing.Point(639, 310);
+            this.txt_total_de_plata.Name = "txt_total_de_plata";
+            this.txt_total_de_plata.Size = new System.Drawing.Size(67, 20);
+            this.txt_total_de_plata.TabIndex = 15;
+            this.txt_total_de_plata.Text = "label38";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(466, 290);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(54, 20);
+            this.label38.TabIndex = 15;
+            this.label38.Text = "Total:";
+            // 
+            // txt_cantitate
+            // 
+            this.txt_cantitate.DecimalPlaces = 2;
+            this.txt_cantitate.Location = new System.Drawing.Point(510, 7);
+            this.txt_cantitate.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.txt_cantitate.Name = "txt_cantitate";
+            this.txt_cantitate.Size = new System.Drawing.Size(71, 20);
+            this.txt_cantitate.TabIndex = 14;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(3, 11);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(128, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "Denumire produs/serviciu";
+            // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(679, 298);
+            this.button8.Location = new System.Drawing.Point(850, 290);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 50);
+            this.button8.Size = new System.Drawing.Size(108, 40);
             this.button8.TabIndex = 5;
-            this.button8.Text = "Genereaza factura";
+            this.button8.Text = "Genereaza document";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9});
+            this.dataGridView1.Location = new System.Drawing.Point(6, 35);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(952, 249);
+            this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nr. Crt.";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 63;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Denumire produs/serviciu";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 250;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "UM";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 40;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Cantitate";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 60;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Pret unitar";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 80;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Valoare";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Valoare T.V.A.";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Cota T.V.A.";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "";
+            this.Column9.Name = "Column9";
+            this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column9.Width = 97;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DataSource = this.catalogprodBindingSource;
+            this.comboBox4.DisplayMember = "denumire";
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(133, 8);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(205, 21);
+            this.comboBox4.TabIndex = 7;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // catalogprodBindingSource
+            // 
+            this.catalogprodBindingSource.DataMember = "catalog_prod";
+            this.catalogprodBindingSource.DataSource = this.masterDataSet;
+            // 
+            // masterDataSet
+            // 
+            this.masterDataSet.DataSetName = "masterDataSet";
+            this.masterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(886, 5);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "Adauga";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(360, 11);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(24, 13);
+            this.label33.TabIndex = 8;
+            this.label33.Text = "UM";
+            // 
+            // txt_um
+            // 
+            this.txt_um.Location = new System.Drawing.Point(390, 8);
+            this.txt_um.Name = "txt_um";
+            this.txt_um.Size = new System.Drawing.Size(53, 20);
+            this.txt_um.TabIndex = 9;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(455, 10);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(49, 13);
+            this.label35.TabIndex = 10;
+            this.label35.Text = "Cantitate";
+            // 
+            // txt_cota_tva
+            // 
+            this.txt_cota_tva.Location = new System.Drawing.Point(829, 7);
+            this.txt_cota_tva.Name = "txt_cota_tva";
+            this.txt_cota_tva.Size = new System.Drawing.Size(39, 20);
+            this.txt_cota_tva.TabIndex = 9;
+            // 
+            // txt_pret_fara_tva
+            // 
+            this.txt_pret_fara_tva.Location = new System.Drawing.Point(675, 7);
+            this.txt_pret_fara_tva.Name = "txt_pret_fara_tva";
+            this.txt_pret_fara_tva.Size = new System.Drawing.Size(63, 20);
+            this.txt_pret_fara_tva.TabIndex = 9;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(750, 11);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(73, 13);
+            this.label36.TabIndex = 10;
+            this.label36.Text = "Cota T.V.A. %";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(589, 11);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(80, 13);
+            this.label34.TabIndex = 10;
+            this.label34.Text = "Pret fara T.V.A.";
             // 
             // panel4
             // 
@@ -241,24 +551,19 @@ namespace Program_Facturat
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.datefirmaclientiBindingSource;
+            this.comboBox1.DataSource = this.dateclientiBindingSource;
             this.comboBox1.DisplayMember = "nume_firma";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(98, 0);
+            this.comboBox1.Location = new System.Drawing.Point(98, 1);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(202, 21);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // datefirmaclientiBindingSource
+            // dateclientiBindingSource
             // 
-            this.datefirmaclientiBindingSource.DataMember = "date_firma_clienti";
-            this.datefirmaclientiBindingSource.DataSource = this.masterDataSet;
-            // 
-            // masterDataSet
-            // 
-            this.masterDataSet.DataSetName = "masterDataSet";
-            this.masterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dateclientiBindingSource.DataMember = "Date_clienti";
+            this.dateclientiBindingSource.DataSource = this.masterDataSet;
             // 
             // label10
             // 
@@ -321,6 +626,7 @@ namespace Program_Facturat
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd-MM-yyyy";
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(73, 55);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -406,9 +712,9 @@ namespace Program_Facturat
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(132, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Date societate";
+            this.label1.Text = "Furnizor";
             // 
             // panel2
             // 
@@ -549,6 +855,11 @@ namespace Program_Facturat
             this.label2.TabIndex = 0;
             this.label2.Text = "Nume societate";
             // 
+            // datefirmaclientiBindingSource
+            // 
+            this.datefirmaclientiBindingSource.DataMember = "date_firma_clienti";
+            this.datefirmaclientiBindingSource.DataSource = this.masterDataSet;
+            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -580,6 +891,7 @@ namespace Program_Facturat
             this.button4.TabIndex = 4;
             this.button4.Text = "Rapoarte";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -619,6 +931,14 @@ namespace Program_Facturat
             // 
             this.date_firma_clientiTableAdapter.ClearBeforeFill = true;
             // 
+            // date_clientiTableAdapter
+            // 
+            this.date_clientiTableAdapter.ClearBeforeFill = true;
+            // 
+            // catalog_prodTableAdapter
+            // 
+            this.catalog_prodTableAdapter.ClearBeforeFill = true;
+            // 
             // IFact_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,19 +956,26 @@ namespace Program_Facturat
             this.Name = "IFact_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IFact";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IFact_Main_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_cantitate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catalogprodBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datefirmaclientiBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datefirmaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datefirmaclientiBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -670,7 +997,6 @@ namespace Program_Facturat
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -708,6 +1034,39 @@ namespace Program_Facturat
         public System.Windows.Forms.Label label17;
         private System.Windows.Forms.BindingSource datefirmaclientiBindingSource;
         private masterDataSetTableAdapters.date_firma_clientiTableAdapter date_firma_clientiTableAdapter;
+        private System.Windows.Forms.BindingSource dateclientiBindingSource;
+        private masterDataSetTableAdapters.Date_clientiTableAdapter date_clientiTableAdapter;
+        public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.BindingSource catalogprodBindingSource;
+        private masterDataSetTableAdapters.catalog_prodTableAdapter catalog_prodTableAdapter;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label txt_total_valoare;
+        private System.Windows.Forms.Label txt_total_valoare_tva;
+        private System.Windows.Forms.Label txt_total_de_plata;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown txt_cantitate;
+        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox txt_um;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txt_cota_tva;
+        private System.Windows.Forms.TextBox txt_pret_fara_tva;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewButtonColumn Column9;
+        public System.Windows.Forms.ComboBox comboBox4;
     }
 }
