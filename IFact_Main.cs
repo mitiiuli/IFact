@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Reporting.WinForms;
+using System.Configuration;
+
 namespace Program_Facturat
 {
     public partial class IFact_Main : Form
     {
-        string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
-       
+       // string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
+        SqlConnection constring = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
         public IFact_Main()
         {
             InitializeComponent();
@@ -34,6 +36,8 @@ namespace Program_Facturat
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'masterDataSet.tipuri_incasari' table. You can move, or remove it, as needed.
+            this.tipuri_incasariTableAdapter.Fill(this.masterDataSet.tipuri_incasari);
             // TODO: This line of code loads data into the 'masterDataSet.catalog_prod' table. You can move, or remove it, as needed.
             this.catalog_prodTableAdapter.Fill(this.masterDataSet.catalog_prod);
             // TODO: This line of code loads data into the 'masterDataSet.Date_clienti' table. You can move, or remove it, as needed.
@@ -43,12 +47,13 @@ namespace Program_Facturat
             // TODO: This line of code loads data into the 'masterDataSet.Date_firma' table. You can move, or remove it, as needed.
             this.date_firmaTableAdapter.Fill(this.masterDataSet.Date_firma);
             comboBox1.SelectedItem = null;
+            comboBox3.SelectedItem = null;
             comboBox4.SelectedItem = null;
             txt_total_valoare.Text = "0.00";
             txt_total_valoare_tva.Text = "0.00";
             txt_total_de_plata.Text = "0.00";
             textBox1.Text = Properties.Settings.Default.nr_doc.ToString();
-            
+            dateTimePicker2.MinDate = DateTime.Today;
             
         }
         
@@ -70,10 +75,10 @@ namespace Program_Facturat
             }
             else
             {
-                SqlConnection connection = new SqlConnection(con);
-                connection.Open();
+                // SqlConnection connection = new SqlConnection(con);
+                constring.Open();
                 string command1 = "SELECT * from Date_clienti where nume_firma = '" + comboBox1.Text + "'";
-                SqlCommand sc = new SqlCommand(command1, connection);
+                SqlCommand sc = new SqlCommand(command1, constring);
                 sc.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(sc);
@@ -86,7 +91,7 @@ namespace Program_Facturat
                     label30.Text = dr["cont"].ToString();
                     label31.Text = dr["banca"].ToString();
                 }
-                connection.Close();
+                constring.Close();
             }
         }
 
@@ -103,18 +108,18 @@ namespace Program_Facturat
             decimal t_val_fara_tva = 0;
             decimal total_val_tva = 0;
             decimal subtotal_de_scazut = 0;
+           
             if (comboBox1.SelectedIndex > -1)
             {
-                Factura fact = new Factura(label27.Text, label28.Text, label29.Text, label30.Text, label31.Text, comboBox1.Text, comboBox2.Text, dateTimePicker1.Text, textBox1.Text, textBox1.Text, txt_total_valoare.Text, txt_total_valoare_tva.Text, txt_total_de_plata.Text);
-                fact.ShowDialog();
+               
                 string command2 = "INSERT into Documente( nr_doc, data_emitere, data_scadenta, suma_totala, nume_firma, CUI, nr_reg_comert, sediul, cont, banca, incasata) VALUES(@nr_doc, @data_emitere, @data_scadenta, @suma_totala, @nume_firma, @CUI, @nr_reg_comert, @sediul, @cont, @banca, @incasata)";
-                SqlConnection conection = new SqlConnection(con);
-                conection.Open();
-                SqlCommand sc1 = new SqlCommand(command2, conection);
+                //SqlConnection conection = new SqlConnection(con);
+                constring.Open();
+                SqlCommand sc1 = new SqlCommand(command2, constring);
                 sc1.Parameters.AddWithValue("@nr_doc", textBox1.Text);
-                sc1.Parameters.AddWithValue("@data_emitere", dateTimePicker1.Text);
-                sc1.Parameters.AddWithValue("@data_scadenta", dateTimePicker2.Text);
-                sc1.Parameters.AddWithValue("@suma_totala", txt_total_de_plata.Text);
+                sc1.Parameters.AddWithValue("@data_emitere", dateTimePicker1.Value.Date.ToShortDateString());
+                sc1.Parameters.AddWithValue("@data_scadenta", dateTimePicker2.Value.Date.ToShortDateString());
+                sc1.Parameters.AddWithValue("@suma_totala", Convert.ToDecimal( txt_total_de_plata.Text));
                 sc1.Parameters.AddWithValue("@nume_firma", comboBox1.Text);
                 sc1.Parameters.AddWithValue("@CUI", label27.Text);
                 sc1.Parameters.AddWithValue("@nr_reg_comert", label28.Text);
@@ -123,14 +128,15 @@ namespace Program_Facturat
                 sc1.Parameters.AddWithValue("@banca", label31.Text);
                 sc1.Parameters.AddWithValue("@incasata", comboBox3.Text);
                 sc1.ExecuteNonQuery();
-                conection.Close();
+                constring.Close();
+                Factura fact = new Factura(label27.Text, label28.Text, label29.Text, label30.Text, label31.Text, comboBox1.Text, comboBox2.Text, dateTimePicker1.Text, textBox1.Text, textBox1.Text, txt_total_valoare.Text, txt_total_valoare_tva.Text, txt_total_de_plata.Text);
+                fact.ShowDialog();
                 do
                 {
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         try
                         {
-                            
                             t_val_fara_tva = Convert.ToDecimal(dataGridView1.Rows[row.Index].Cells[5].Value);
                             total_val_tva = Convert.ToDecimal(dataGridView1.Rows[row.Index].Cells[6].Value);
                             t_val = Math.Round(t_val - t_val_fara_tva, 2);
@@ -174,10 +180,10 @@ namespace Program_Facturat
             }
             else
             {
-                SqlConnection connection = new SqlConnection(con);
-                connection.Open();
+                //SqlConnection connection = new SqlConnection(con);
+                constring.Open();
                 string command1 = "SELECT * from catalog_prod where denumire = '" + comboBox4.Text + "'";
-                SqlCommand sc = new SqlCommand(command1, connection);
+                SqlCommand sc = new SqlCommand(command1, constring);
                 sc.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(sc);
@@ -189,11 +195,11 @@ namespace Program_Facturat
                     txt_cota_tva.Text = dr["val_tva"].ToString();
                     
                 }
-                connection.Close();
+                constring.Close();
             }
             
         }
-        int x = 1;
+        
         decimal t_val;
         decimal t_val_tva;
         decimal t_de_plata;
@@ -213,7 +219,7 @@ namespace Program_Facturat
                 cota_tva = Convert.ToDecimal(txt_cota_tva.Text);
                 val_fara_tva = Math.Round(cant * pret, 2);
                 decimal val_tva = Math.Round(val_fara_tva * cota_tva / 100, 2);
-                dataGridView1.Rows[i].Cells[0].Value = x;
+                dataGridView1.Rows[i].Cells[0].Value = dataGridView1.Rows.Count-1;
                 dataGridView1.Rows[i].Cells[1].Value = comboBox4.Text.ToString();
                 dataGridView1.Rows[i].Cells[2].Value = txt_um.Text;
                 dataGridView1.Rows[i].Cells[3].Value = Math.Round( cant,2);
@@ -233,12 +239,12 @@ namespace Program_Facturat
                 subtotal_de_plata = Math.Round(subtotal_val + subtotal_val_tva, 2);
                 t_de_plata = Math.Round(t_de_plata + subtotal_de_plata, 2);
                 txt_total_de_plata.Text = t_de_plata.ToString();
-                x++;
 
-                SqlConnection connection = new SqlConnection(con);
-                connection.Open();
+
+                //SqlConnection connection = new SqlConnection(con);
+                constring.Open();
                 string command1 = "INSERT into fact_detalii(nr_doc, nr_crt, denumire, um, cant, pret_f_tva, valoare, val_tva, cota_tva ) VALUES( @nr_doc, @nr_crt, @denumire, @um, @cant, @pret_f_tva, @valoare, @val_tva, @cota_tva)";
-                SqlCommand sc = new SqlCommand(command1, connection);
+                SqlCommand sc = new SqlCommand(command1, constring);
                 sc.Parameters.AddWithValue("@nr_doc", textBox1.Text);
                 sc.Parameters.AddWithValue("@nr_crt", dataGridView1.Rows[i].Cells[0].Value);
                 sc.Parameters.AddWithValue("@denumire", dataGridView1.Rows[i].Cells[1].Value);
@@ -249,7 +255,7 @@ namespace Program_Facturat
                 sc.Parameters.AddWithValue("@val_tva", dataGridView1.Rows[i].Cells[6].Value);
                 sc.Parameters.AddWithValue("@cota_tva", Math.Round( cota_tva,2));
                 sc.ExecuteNonQuery();
-                connection.Close();
+                constring.Close();
                 txt_um.Clear();
                 txt_cantitate.Value = 0;
                 txt_pret_fara_tva.Clear();
@@ -273,6 +279,7 @@ namespace Program_Facturat
                 if (e.ColumnIndex == this.Column9.Index)
                 {
                     int rowindex = dataGridView1.CurrentCell.RowIndex;
+                    
                     t_val_fara_tva = Convert.ToDecimal( dataGridView1.Rows[rowindex].Cells[5].Value);
                     total_val_tva = Convert.ToDecimal(dataGridView1.Rows[rowindex].Cells[6].Value);
                     t_val = Math.Round(t_val - t_val_fara_tva, 2);
@@ -301,24 +308,24 @@ namespace Program_Facturat
         }
         private void sterge_factura_nefinalizata()
         {
-            SqlConnection constr = new SqlConnection(con);
+           // SqlConnection constr = new SqlConnection(con);
             string command1 = "DELETE from fact_detalii where nr_doc=@nr_doc";
-            SqlCommand com1 = new SqlCommand(command1, constr);
+            SqlCommand com1 = new SqlCommand(command1, constring);
             com1.Parameters.AddWithValue("@nr_doc", textBox1.Text);
-            constr.Open();
+            constring.Open();
             com1.ExecuteNonQuery();
-            constr.Close();
+            constring.Close();
                 
         }
         private void sterge_produse_din_bazadate(int index)
         {
-            SqlConnection constr = new SqlConnection(con);
+            //SqlConnection constr = new SqlConnection(con);
             string command1 = "DELETE from fact_detalii where nr_crt=@nr_crt";
-            SqlCommand com1 = new SqlCommand(command1, constr);
+            SqlCommand com1 = new SqlCommand(command1, constring);
             com1.Parameters.AddWithValue("@nr_crt", dataGridView1.Rows[index].Cells[0].Value);
-            constr.Open();
+            constring.Open();
             com1.ExecuteNonQuery();
-            constr.Close();
+            constring.Close();
 
         }
 
@@ -335,5 +342,13 @@ namespace Program_Facturat
             Rapoarte rap = new Rapoarte();
             rap.ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Incasari incasari = new Incasari();
+            incasari.ShowDialog();
+        }
+
+        
     }
 }

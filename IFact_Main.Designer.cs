@@ -80,6 +80,7 @@ namespace Program_Facturat
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.tipuriincasariBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -116,6 +117,7 @@ namespace Program_Facturat
             this.date_firma_clientiTableAdapter = new Program_Facturat.masterDataSetTableAdapters.date_firma_clientiTableAdapter();
             this.date_clientiTableAdapter = new Program_Facturat.masterDataSetTableAdapters.Date_clientiTableAdapter();
             this.catalog_prodTableAdapter = new Program_Facturat.masterDataSetTableAdapters.catalog_prodTableAdapter();
+            this.tipuri_incasariTableAdapter = new Program_Facturat.masterDataSetTableAdapters.tipuri_incasariTableAdapter();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_cantitate)).BeginInit();
@@ -125,6 +127,7 @@ namespace Program_Facturat
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipuriincasariBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datefirmaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datefirmaclientiBindingSource)).BeginInit();
@@ -292,6 +295,7 @@ namespace Program_Facturat
             this.dataGridView1.Location = new System.Drawing.Point(6, 35);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(952, 249);
             this.dataGridView1.TabIndex = 13;
@@ -302,51 +306,60 @@ namespace Program_Facturat
             // 
             this.Column1.HeaderText = "Nr. Crt.";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 63;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Denumire produs/serviciu";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 250;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "UM";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Width = 40;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Cantitate";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Width = 60;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Pret unitar";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.Width = 80;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Valoare";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "Valoare T.V.A.";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "Cota T.V.A.";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "";
             this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column9.Width = 97;
@@ -395,6 +408,7 @@ namespace Program_Facturat
             // 
             this.txt_um.Location = new System.Drawing.Point(390, 8);
             this.txt_um.Name = "txt_um";
+            this.txt_um.ReadOnly = true;
             this.txt_um.Size = new System.Drawing.Size(53, 20);
             this.txt_um.TabIndex = 9;
             // 
@@ -411,6 +425,7 @@ namespace Program_Facturat
             // 
             this.txt_cota_tva.Location = new System.Drawing.Point(829, 7);
             this.txt_cota_tva.Name = "txt_cota_tva";
+            this.txt_cota_tva.ReadOnly = true;
             this.txt_cota_tva.Size = new System.Drawing.Size(39, 20);
             this.txt_cota_tva.TabIndex = 9;
             // 
@@ -418,6 +433,7 @@ namespace Program_Facturat
             // 
             this.txt_pret_fara_tva.Location = new System.Drawing.Point(675, 7);
             this.txt_pret_fara_tva.Name = "txt_pret_fara_tva";
+            this.txt_pret_fara_tva.ReadOnly = true;
             this.txt_pret_fara_tva.Size = new System.Drawing.Size(63, 20);
             this.txt_pret_fara_tva.TabIndex = 9;
             // 
@@ -603,16 +619,18 @@ namespace Program_Facturat
             // 
             // comboBox3
             // 
+            this.comboBox3.DataSource = this.tipuriincasariBindingSource;
+            this.comboBox3.DisplayMember = "denumire";
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "cu Bon fiscal",
-            "prin Banca",
-            "cu Chitanta",
-            "Nu"});
             this.comboBox3.Location = new System.Drawing.Point(90, 107);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 9;
+            // 
+            // tipuriincasariBindingSource
+            // 
+            this.tipuriincasariBindingSource.DataMember = "tipuri_incasari";
+            this.tipuriincasariBindingSource.DataSource = this.masterDataSet;
             // 
             // dateTimePicker2
             // 
@@ -622,6 +640,7 @@ namespace Program_Facturat
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(99, 20);
             this.dateTimePicker2.TabIndex = 8;
+           
             // 
             // dateTimePicker1
             // 
@@ -912,6 +931,7 @@ namespace Program_Facturat
             this.button6.TabIndex = 6;
             this.button6.Text = "Incasari";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -939,6 +959,10 @@ namespace Program_Facturat
             // 
             this.catalog_prodTableAdapter.ClearBeforeFill = true;
             // 
+            // tipuri_incasariTableAdapter
+            // 
+            this.tipuri_incasariTableAdapter.ClearBeforeFill = true;
+            // 
             // IFact_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -953,6 +977,7 @@ namespace Program_Facturat
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "IFact_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IFact";
@@ -972,6 +997,7 @@ namespace Program_Facturat
             ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipuriincasariBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datefirmaBindingSource)).EndInit();
@@ -1068,5 +1094,7 @@ namespace Program_Facturat
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewButtonColumn Column9;
         public System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.BindingSource tipuriincasariBindingSource;
+        private masterDataSetTableAdapters.tipuri_incasariTableAdapter tipuri_incasariTableAdapter;
     }
 }

@@ -9,11 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
+
 namespace Program_Facturat
 {
     public partial class Factura : Form
     {
-        string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
+        SqlConnection constring = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
+        //string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
         private string cui, nr_reg_comert, adresa, cont, banca, nume_firma_client, tip_doc, nr_doc, data_emitere, nr_document, valoare, val_tva, total_de_plata;
         
         public Factura(string CUI, string Nr_Reg_Comert, string Adresa, string Cont, string Banca, string Nume_Firma_Client, string Tip_doc, string Data_emitere, string Nr_doc, string Nr_document, string Valoare, string Val_tva, string Total_de_plata)
@@ -38,12 +41,12 @@ namespace Program_Facturat
 
         private void Factura_Load(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(con);
-            connection.Open();
+            //SqlConnection connection = new SqlConnection(con);
+            constring.Open();
             string command1 = "SELECT * from Date_firma ";
             string command2 = "SELECT * from fact_detalii where nr_doc = '"+nr_document+"'";
-            SqlCommand sc = new SqlCommand(command1, connection);
-            SqlCommand sc2 = new SqlCommand(command2, connection);
+            SqlCommand sc = new SqlCommand(command1, constring);
+            SqlCommand sc2 = new SqlCommand(command2, constring);
             SqlDataAdapter da = new SqlDataAdapter(sc);
             SqlDataAdapter da2 = new SqlDataAdapter(sc2);
             DataTable dt = new DataTable();

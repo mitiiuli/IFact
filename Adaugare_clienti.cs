@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Program_Facturat
 {
     public partial class Adaugare_clienti : Form
     {
+        SqlConnection constring = new SqlConnection( ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
         private readonly IFact_Main frm1;
-        string constring = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
+        //string constring = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
         public Adaugare_clienti(IFact_Main fr)
         {
             InitializeComponent();
@@ -23,9 +25,9 @@ namespace Program_Facturat
         private void button1_Click(object sender, EventArgs e)
         {
             string command2 = "INSERT into Date_clienti( nume_firma, CUI, nr_reg_comert, sediul, nr_telefon, cont, banca, email, pers_contact, tel_pers_contact, email_pers_contact) VALUES( @nume_firma, @CUI, @nr_reg_comert, @sediul, @nr_telefon, @cont, @banca, @email, @pers_contact, @tel_pers_contact, @email_pers_contact)";
-            SqlConnection con = new SqlConnection(constring);
-            con.Open();
-            SqlCommand sc1 = new SqlCommand(command2, con);
+            //SqlConnection con = new SqlConnection(constring);
+            constring.Open();
+            SqlCommand sc1 = new SqlCommand(command2, constring);
             // Adauga Date clienti in baza de date
             if (txt_nume_firma.Text.Length > 0 && txt_cui.Text.Length > 0 && txt_reg.Text.Length > 0 && txt_sediul.Text.Length > 0 && txt_cont.Text.Length > 0 && txt_banca.Text.Length > 0)
             {
@@ -56,7 +58,7 @@ namespace Program_Facturat
 
                 SqlDataAdapter MyDA = new SqlDataAdapter();
                 string sqlSelectAll = "SELECT * from Date_clienti";
-                MyDA.SelectCommand = new SqlCommand(sqlSelectAll, con);
+                MyDA.SelectCommand = new SqlCommand(sqlSelectAll, constring);
 
                 DataTable table = new DataTable();
                 MyDA.Fill(table);
@@ -70,7 +72,7 @@ namespace Program_Facturat
             {
                 MessageBox.Show("Trebuie completate campurile marcate cu * !");
             }
-            con.Close();
+            constring.Close();
         }
 
         private void Adaugare_clienti_Load(object sender, EventArgs e)
@@ -100,15 +102,15 @@ namespace Program_Facturat
 
         private void txt_nume_firma_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(constring);
+            //SqlConnection con = new SqlConnection(constring);
             string command1 = "SELECT * from Date_clienti where nume_firma like '%" + txt_nume_firma.Text + "%'";
-            con.Open();
-            SqlCommand sqlcmd = new SqlCommand(command1, con);
+           // constring.Open();
+            SqlCommand sqlcmd = new SqlCommand(command1, constring);
             SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            con.Close();
+            constring.Close();
         }
     }
 }

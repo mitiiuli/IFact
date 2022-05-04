@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
+
 namespace Program_Facturat
 {
     public partial class Catalog_produse : Form
     {
-        string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
+        SqlConnection constring = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
+        //string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
         private readonly IFact_Main frm1;
         public Catalog_produse(IFact_Main fr)
         {
@@ -24,10 +27,10 @@ namespace Program_Facturat
         {
             if (textBox1.TextLength > 0 && textBox2.TextLength > 0 && numericUpDown1.Value > 0 && comboBox1.SelectedItem != null)
             {
-                SqlConnection connection = new SqlConnection(con);
-                connection.Open();
+                //SqlConnection connection = new SqlConnection(con);
+                constring.Open();
                 string command1 = "INSERT into catalog_prod( denumire, um, pret_f_tva, val_tva, sterge ) VALUES( @denumire, @um, @pret_f_tva, @val_tva, @sterge)";
-                SqlCommand sc = new SqlCommand(command1, connection);
+                SqlCommand sc = new SqlCommand(command1, constring);
                 sc.Parameters.AddWithValue("@denumire", textBox1.Text);
                 sc.Parameters.AddWithValue("@um", textBox2.Text);
                 sc.Parameters.AddWithValue("@pret_f_tva", numericUpDown1.Value.ToString());
@@ -37,7 +40,7 @@ namespace Program_Facturat
 
                 SqlDataAdapter MyDA = new SqlDataAdapter();
                 string sqlSelectAll = "SELECT * from catalog_prod";
-                MyDA.SelectCommand = new SqlCommand(sqlSelectAll, connection);
+                MyDA.SelectCommand = new SqlCommand(sqlSelectAll, constring);
                 DataTable table = new DataTable();
                 MyDA.Fill(table);
                 BindingSource bSource = new BindingSource();
@@ -51,7 +54,7 @@ namespace Program_Facturat
                 numericUpDown1.ResetText();
                 numericUpDown1.Value = 0;
                 comboBox1.ResetText();
-                connection.Close();
+                constring.Close();
             }
             else
             {
@@ -73,17 +76,17 @@ namespace Program_Facturat
                 if (e.ColumnIndex == this.sterge.Index)
                 {
                     int index = dataGridView1.CurrentCell.RowIndex;
-                    SqlConnection constr = new SqlConnection(con);
+                   // SqlConnection constr = new SqlConnection(con);
                     string command1 = "DELETE from catalog_prod where id=@id";
-                    SqlCommand com1 = new SqlCommand(command1, constr);
+                    SqlCommand com1 = new SqlCommand(command1, constring);
                     com1.Parameters.AddWithValue("@id", dataGridView1.Rows[index].Cells[0].Value);
-                    constr.Open();
+                    constring.Open();
                     com1.ExecuteNonQuery();
-                    constr.Close();
+                    constring.Close();
 
                     SqlDataAdapter MyDA = new SqlDataAdapter();
                     string sqlSelectAll = "SELECT * from catalog_prod";
-                    MyDA.SelectCommand = new SqlCommand(sqlSelectAll, constr);
+                    MyDA.SelectCommand = new SqlCommand(sqlSelectAll, constring);
                     DataTable table = new DataTable();
                     MyDA.Fill(table);
                     BindingSource bSource = new BindingSource();
@@ -98,15 +101,15 @@ namespace Program_Facturat
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(con);
+            //SqlConnection connection = new SqlConnection(con);
             string command1 = "SELECT * from catalog_prod where denumire like '%" + textBox1.Text + "%'";
-            connection.Open();
-            SqlCommand sqlcmd = new SqlCommand(command1, connection);
+           // constring.Open();
+            SqlCommand sqlcmd = new SqlCommand(command1, constring);
             SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            connection.Close();
+            constring.Close();
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)

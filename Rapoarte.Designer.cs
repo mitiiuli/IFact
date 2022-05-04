@@ -29,6 +29,7 @@ namespace Program_Facturat
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -36,6 +37,10 @@ namespace Program_Facturat
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -43,15 +48,15 @@ namespace Program_Facturat
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.dateclientiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDataSet = new Program_Facturat.masterDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.date_clientiTableAdapter = new Program_Facturat.masterDataSetTableAdapters.Date_clientiTableAdapter();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -64,6 +69,7 @@ namespace Program_Facturat
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Documente emise";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -75,6 +81,7 @@ namespace Program_Facturat
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Situatie clienti";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -86,6 +93,7 @@ namespace Program_Facturat
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Centralizator vanzari";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -97,6 +105,7 @@ namespace Program_Facturat
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Documente anulate";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // panel1
             // 
@@ -105,7 +114,7 @@ namespace Program_Facturat
             this.panel1.Controls.Add(this.radioButton4);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Location = new System.Drawing.Point(34, 47);
+            this.panel1.Location = new System.Drawing.Point(12, 47);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 178);
             this.panel1.TabIndex = 1;
@@ -113,7 +122,7 @@ namespace Program_Facturat
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(129, 31);
+            this.label1.Location = new System.Drawing.Point(94, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 2;
@@ -122,6 +131,10 @@ namespace Program_Facturat
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.checkBox6);
+            this.panel2.Controls.Add(this.checkBox5);
+            this.panel2.Controls.Add(this.checkBox4);
+            this.panel2.Controls.Add(this.checkBox3);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.checkBox2);
@@ -129,14 +142,51 @@ namespace Program_Facturat
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.radioButton6);
-            this.panel2.Controls.Add(this.radioButton8);
-            this.panel2.Controls.Add(this.radioButton7);
-            this.panel2.Controls.Add(this.radioButton5);
-            this.panel2.Location = new System.Drawing.Point(330, 47);
+            this.panel2.Location = new System.Drawing.Point(285, 47);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(289, 178);
+            this.panel2.Size = new System.Drawing.Size(270, 178);
             this.panel2.TabIndex = 3;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(3, 26);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(52, 17);
+            this.checkBox6.TabIndex = 9;
+            this.checkBox6.Text = "Client";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(141, 3);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(52, 17);
+            this.checkBox5.TabIndex = 8;
+            this.checkBox5.Text = "Avize";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(67, 3);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(68, 17);
+            this.checkBox4.TabIndex = 8;
+            this.checkBox4.Text = "Proforme";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(3, 3);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(58, 17);
+            this.checkBox3.TabIndex = 8;
+            this.checkBox3.Text = "Facturi";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker2
             // 
@@ -147,6 +197,7 @@ namespace Program_Facturat
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(94, 20);
             this.dateTimePicker2.TabIndex = 7;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -157,6 +208,8 @@ namespace Program_Facturat
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(94, 20);
             this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 4, 28, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // checkBox2
             // 
@@ -167,6 +220,7 @@ namespace Program_Facturat
             this.checkBox2.TabIndex = 5;
             this.checkBox2.Text = "Data sfarsit";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_1);
             // 
             // checkBox1
             // 
@@ -177,6 +231,7 @@ namespace Program_Facturat
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "Data inceput";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label5
             // 
@@ -190,67 +245,41 @@ namespace Program_Facturat
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "cu Bon fiscal",
+            "prin Banca",
+            "cu Chitanta",
+            "Neachitate"});
             this.comboBox2.Location = new System.Drawing.Point(80, 46);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(118, 21);
             this.comboBox2.TabIndex = 1;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.dateclientiBindingSource;
+            this.comboBox1.DisplayMember = "nume_firma";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(59, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 1;
             // 
-            // radioButton6
+            // dateclientiBindingSource
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(3, 26);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(51, 17);
-            this.radioButton6.TabIndex = 0;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Client";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.dateclientiBindingSource.DataMember = "Date_clienti";
+            this.dateclientiBindingSource.DataSource = this.masterDataSet;
             // 
-            // radioButton8
+            // masterDataSet
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(123, 3);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(67, 17);
-            this.radioButton8.TabIndex = 0;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Proforme";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(66, 3);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(51, 17);
-            this.radioButton7.TabIndex = 0;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Avize";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(3, 3);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(57, 17);
-            this.radioButton5.TabIndex = 0;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Facturi";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.masterDataSet.DataSetName = "masterDataSet";
+            this.masterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(356, 31);
+            this.label2.Location = new System.Drawing.Point(305, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
@@ -258,28 +287,23 @@ namespace Program_Facturat
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(435, 280);
+            this.button1.Location = new System.Drawing.Point(239, 239);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Genereaza";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // date_clientiTableAdapter
             // 
-            this.button2.Location = new System.Drawing.Point(544, 280);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Anuleaza";
-            this.button2.UseVisualStyleBackColor = true;
+            this.date_clientiTableAdapter.ClearBeforeFill = true;
             // 
             // Rapoarte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 315);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(564, 274);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
@@ -289,10 +313,13 @@ namespace Program_Facturat
             this.Name = "Rapoarte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rapoarte";
+            this.Load += new System.EventHandler(this.Rapoarte_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateclientiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,10 +336,6 @@ namespace Program_Facturat
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -320,6 +343,12 @@ namespace Program_Facturat
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private masterDataSet masterDataSet;
+        private System.Windows.Forms.BindingSource dateclientiBindingSource;
+        private masterDataSetTableAdapters.Date_clientiTableAdapter date_clientiTableAdapter;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }

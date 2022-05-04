@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
+
 namespace Program_Facturat
 {
     public partial class Update_Societate : Form
     {
-        string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
+        SqlConnection constring = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
+       // string con = "Data Source=DESKTOP-7HMM0LA;Initial Catalog=master;Integrated Security=True";
         private readonly IFact_Main frm2;
         public Update_Societate(IFact_Main fr2)
         {
@@ -29,10 +32,10 @@ namespace Program_Facturat
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(con);
-            connection.Open();
+            //SqlConnection connection = new SqlConnection(con);
+            constring.Open();
             string command1 = "UPDATE Date_firma SET nume_firma=@nume_firma , CUI=@CUI, nr_reg_comert=@nr_reg_comert, sediul=@sediul, nr_telefon=@nr_telefon, cont=@cont, banca=@banca, email=@email ";
-            SqlCommand sc = new SqlCommand(command1, connection);
+            SqlCommand sc = new SqlCommand(command1, constring);
             sc.Parameters.AddWithValue("@nume_firma", textBox1.Text);
             sc.Parameters.AddWithValue("@CUI", textBox2.Text);
             sc.Parameters.AddWithValue("@nr_reg_comert",textBox3.Text );
@@ -48,7 +51,7 @@ namespace Program_Facturat
             frm2.label19.Text = textBox4.Text;
             frm2.label20.Text = textBox5.Text;
             frm2.label21.Text = textBox6.Text;
-            connection.Close();
+            constring.Close();
         }
     }
 }
